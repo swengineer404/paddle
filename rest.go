@@ -25,11 +25,15 @@ type restClient struct {
 	c        *http.Client
 }
 
-func newRestClient(vendorID, apiKey string) *restClient {
+func newRestClient(vendorID, apiKey string, sandbox bool) *restClient {
+	baseURL := "https:/vendors.paddle.com/api/2.0"
+	if sandbox {
+		baseURL = "https://sandbox-vendors.paddle.com/api/2.0"
+	}
 	return &restClient{
 		vendorID: vendorID,
 		apiKey:   apiKey,
-		baseURL:  "https://sandbox-vendors.paddle.com/api/2.0",
+		baseURL:  baseURL,
 		c: &http.Client{
 			Timeout: time.Second * 30,
 		},
