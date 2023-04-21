@@ -7,8 +7,8 @@ type Client struct {
 	Product *ProductService
 }
 
-func New(vendorID, apiKey string) *Client {
-	rc := newRestClient(vendorID, apiKey)
+func New(vendorID, apiKey string, sandbox bool) *Client {
+	rc := newRestClient(vendorID, apiKey, sandbox)
 
 	c := &Client{
 		rest: rc,
