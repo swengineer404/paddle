@@ -2,8 +2,8 @@ package paddle
 
 type GetSubscriptionResult struct {
 	Success  bool `json:"success"`
-	Response struct {
-		URL string `json:"url"`
+	Response []struct {
+		State string `json:"state"`
 	} `json:"response"`
 }
 
