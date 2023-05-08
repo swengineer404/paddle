@@ -3,8 +3,9 @@ package paddle
 import "fmt"
 
 type Client struct {
-	rest    *restClient
-	Product *ProductService
+	rest         *restClient
+	Product      *ProductService
+	Subscription *SubscriptionService
 }
 
 func New(vendorID, apiKey string, sandbox bool) *Client {
@@ -15,6 +16,7 @@ func New(vendorID, apiKey string, sandbox bool) *Client {
 	}
 
 	c.Product = NewProductService(c)
+	c.Subscription = NewSubscriptionService(c)
 
 	return c
 }
